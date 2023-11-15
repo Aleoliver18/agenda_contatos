@@ -17,6 +17,9 @@ function adicionaLinha() {
     linha += `<td>${inputTelefone.value}</td>`
     linha += '</tr>'
     linhas += linha
+
+    inputNome.value = ''
+    inputTelefone.value = ''
 }
 
 function atualizaTabela() {
