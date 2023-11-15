@@ -1,7 +1,9 @@
 const form = document.getElementById('contatos')
 let linhas = ''
 
-form.addEventListener('submit', function(e) {
+const tel = []
+
+form.addEventListener('submit', function (e) {
     e.preventDefault()
 
     adicionaLinha()
@@ -12,11 +14,18 @@ function adicionaLinha() {
     const inputNome = document.getElementById('nome')
     const inputTelefone = document.getElementById('telefone')
 
-    let linha = '<tr>'
-    linha += `<td>${inputNome.value}</td>`
-    linha += `<td>${inputTelefone.value}</td>`
-    linha += '</tr>'
-    linhas += linha
+    if (tel.includes(inputTelefone.value)) {
+        alert(`Telefone ${inputTelefone.value} já foi cadastrado!!!`)
+    } else {
+        tel.push(inputTelefone.value)
+        let linha = '<tr>'
+        linha += `<td>${inputNome.value}</td>`
+        linha += `<td>${inputTelefone.value}</td>`
+        linha += '</tr>'
+        linhas += linha
+    }
+
+
 
     inputNome.value = ''
     inputTelefone.value = ''
@@ -27,3 +36,4 @@ function atualizaTabela() {
 
     tabela.innerHTML = linhas
 }
+
